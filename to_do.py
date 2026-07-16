@@ -30,6 +30,20 @@ class ToDoList(ctk.CTkScrollableFrame):
             to_do_item.grid(row=i, column=0, padx=10, pady=(10, 0), sticky="w")
             self.checkboxes.append(to_do_item)
     
+    # function to form a dictionary of all the current items 
+    # this is convient for constantly reprinting the list of to_do items! 
+    def dict_sort(self): 
+        # clear the current used dict 
+        all_to_do = {}
+        
+        for _ in self.checkboxes: 
+            if _.get() == 1: # if the checkbox is filled 
+                all_to_do[_] = True 
+            else:
+               all_to_do[_] = False 
+        
+        return all_to_do
+    
     # function used to get "completed" to do list items 
     def get(self): 
         checked_counter = 0
@@ -39,13 +53,16 @@ class ToDoList(ctk.CTkScrollableFrame):
                 _.configure(text_color = "gray", font = self.stc)
             else:
                _.configure(text_color = "white", font = ("Google Sans Flex", 20, "bold")) 
+        
+        # return the value for the "on_completed" function 
+        return checked_counter
             
     # this function will run when the checkbox is clicked
     # DIRECTLY updates fractal tree! 
     def on_completed(self): 
-        pass 
-    
         #1: refresh the list 
+        # the way that I want to achieve this is to add to a dictionary
+        # dictionary used to diffrienciate between a 
         
         #2: Get the # of completed lists 
         
