@@ -1,4 +1,5 @@
 import customtkinter as ctk  
+import tkinter.font as tkfont
 
 class ToDoList(ctk.CTkScrollableFrame):
     def __init__(self, master, values, width = 200, height = 200, corner_radius = 50, border_width = None, bg_color = "transparent", fg_color = None, border_color = None, scrollbar_fg_color = None, scrollbar_button_color = None, scrollbar_button_hover_color = None, label_fg_color = None, label_text_color = None, label_text = "", label_font = None, label_anchor = "center", orientation = "vertical"):
@@ -11,6 +12,10 @@ class ToDoList(ctk.CTkScrollableFrame):
         self.values = values
         self.checkboxes = []
         
+        # create a "strike through" font when it is completed
+        base_font = ("Google Sans Flex", 20, "normal")
+        self.stc = ctk.CTkFont(family=base_font[0], size=base_font[1], overstrike=True)
+        
         # create a label for the to do list 
         self.header = ctk.CTkLabel(master, text = "To - Do", font = ("Google Sans Flex", 30, "bold"), text_color = "white", fg_color="transparent", bg_color="transparent")
         self.header.grid(row = 0, column = 2, sticky = "sw", padx = 230)
@@ -21,8 +26,37 @@ class ToDoList(ctk.CTkScrollableFrame):
 
         # add checkboxes 
         for i, value in enumerate(self.values):
-            to_do_item = ctk.CTkCheckBox(self, text = value)
+            to_do_item = ctk.CTkCheckBox(self, text = value, font = ("Google Sans Flex", 18, "bold"), text_color = "white", command = self.on_completed, checkmark_color="black", fg_color= "white", hover_color="white")
             to_do_item.grid(row=i, column=0, padx=10, pady=(10, 0), sticky="w")
             self.checkboxes.append(to_do_item)
+    
+    # function used to get "completed" to do list items 
+    def get(self): 
+        checked_counter = 0
+        for _ in self.checkboxes: 
+            if _.get() == 1: # if the checkbox is filled 
+                checked_counter += 1
+                _.configure(text_color = "gray", font = self.stc)
+            else:
+               _.configure(text_color = "white", font = ("Google Sans Flex", 20, "bold")) 
             
+    # this function will run when the checkbox is clicked
+    # DIRECTLY updates fractal tree! 
+    def on_completed(self): 
+        pass 
+    
+        #1: refresh the list 
+        
+        #2: Get the # of completed lists 
+        
+        # update tree/give tree update trigger 
+    
+    
+    # refresh list function 
+    
+    # add new popup function (use input dialog)
+    
+    # add item function 
+    
+    
         
