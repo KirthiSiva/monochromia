@@ -32,7 +32,7 @@ ctk.FontManager.load_font("GoogleSansFlex-VariableFont_GRAD,ROND,opsz,slnt,wdth,
 """
 
 # set a value for "values" for the to-do list checklists
-to_do_values = []
+to_do_values = ["hello", "cro"]
 
 # start the dashboard 
 app = ctk.CTk() 

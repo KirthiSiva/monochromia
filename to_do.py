@@ -21,7 +21,7 @@ class ToDoList(ctk.CTkScrollableFrame):
         self.header.grid(row = 0, column = 2, sticky = "sw", padx = 230)
         
         # create a button on the to do list 
-        self.button = ctk.CTkButton(master, text = "Add Items", font = ("Google Sans Flex", 18, "normal"), corner_radius = 100, text_color = "white", fg_color="black", bg_color="transparent")
+        self.button = ctk.CTkButton(master, text = "Add Items", font = ("Google Sans Flex", 18, "normal"), corner_radius = 100, text_color = "white", fg_color="black", bg_color="transparent", command = button_pressed)
         self.button.grid(row = 0, column = 2, sticky = "se", padx = 150, pady = 7)
 
         # add checkboxes 
@@ -41,19 +41,17 @@ class ToDoList(ctk.CTkScrollableFrame):
                 all_to_do[_] = True 
             else:
                all_to_do[_] = False 
+            _.grid_forget()
         
         return all_to_do
     
-    # function used to get "completed" to do list items 
+    # function used to count number of completed items in the to-do list
     def get(self): 
         checked_counter = 0
         for _ in self.checkboxes: 
             if _.get() == 1: # if the checkbox is filled 
                 checked_counter += 1
-                _.configure(text_color = "gray", font = self.stc)
-            else:
-               _.configure(text_color = "white", font = ("Google Sans Flex", 20, "bold")) 
-        
+
         # return the value for the "on_completed" function 
         return checked_counter
             
@@ -62,14 +60,40 @@ class ToDoList(ctk.CTkScrollableFrame):
     def on_completed(self): 
         #1: refresh the list 
         # the way that I want to achieve this is to add to a dictionary
-        # dictionary used to diffrienciate between a 
+        # a: dictionary used to diffrienciate between complete and incomplete tasks
+        dict_to_sort = self.dict_sort() 
         
-        #2: Get the # of completed lists 
+        # clear the checkboxes stuff now 
+        self.checkboxes = []
+        
+        #b: create a counter for printing it (to know the row #)
+        count = 0 
+        
+        # c: create a for loop to add the incomplete items 
+        for i, j in dict_to_sort.items(): 
+            if j == False: 
+                i.grid(row=count, column=0, padx=10, pady=(10, 0), sticky="w")
+                i.configure(text_color = "white", font = ("Google Sans Flex", 20, "bold")) 
+                self.checkboxes.append(i)
+                count += 1
+        
+        # d: do the same thing for complete
+        for i, j in dict_to_sort.items(): 
+            if j == True: 
+                i.grid(row=count, column=0, padx=10, pady=(10, 0), sticky="w")
+                i.configure(text_color = "gray", font = self.stc)
+                self.checkboxes.append(i)
+                count += 1
+        
+        #2: Get the # of completed items 
+        num_of_completed = self.get()
         
         # update tree/give tree update trigger 
+        # FIGURE THIS OUT LATER
     
-    
-    # refresh list function 
+    # function for when the "add" button is clicked (open the input)
+    def button_pressed(): 
+        pass 
     
     # add new popup function (use input dialog)
     

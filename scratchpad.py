@@ -1,9 +1,13 @@
-import customtkinter as ctk 
+def dict_sort(self): 
+    # clear the current used dict 
+    all_to_do = {}
+    
+    for _ in self.checkboxes: 
+        if _.get() == 1: # if the checkbox is filled 
+            all_to_do[_] = True 
+        else:
+            all_to_do[_] = False 
+    
+    return all_to_do
 
-app = ctk.CTk() 
-app.title("Dashboard 3000")
-# used to make it maximize to show task bar and nothing else 
-# how does this work on mac? 
-app.after(0, lambda: app.state('zoomed'))
-
-app.mainloop()
+print(dict_sort())
