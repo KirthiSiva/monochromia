@@ -15,9 +15,10 @@ from pc_display import PCDisplay
 from prod_graph import ProdGraph
 from pathlib import Path
 
-
 # import fonts 
-ctk.FontManager.load_font("GoogleSansFlex-VariableFont_GRAD,ROND,opsz,slnt,wdth,wght.ttf")
+DIR = Path(__file__).resolve().parent
+google_font_dir = DIR / "assets" / "GoogleSansFlex-VariableFont_GRAD,ROND,opsz,slnt,wdth,wght.ttf"
+ctk.FontManager.load_font(str(google_font_dir))
 
 # create a ton of csv files for each thing (reading)
 #speudocode for the csv
@@ -33,6 +34,7 @@ ctk.FontManager.load_font("GoogleSansFlex-VariableFont_GRAD,ROND,opsz,slnt,wdth,
 # set a value for "values" for the to-do list checklists
 to_do_values = ["hello"]
 
+ctk.set_default_color_theme("blue")
 # start the dashboard 
 app = ctk.CTk() 
 
@@ -67,6 +69,8 @@ colour.grid(row = 0, column = 2, sticky = "ne", padx = 200, pady= 100)
 goal.grid(row = 2, column = 2, sticky = "e", padx = 40)
 weather.grid(row = 0, column = 0)
 pc_display.grid(row = 1, column = 0)
+
+ctk.set_default_color_theme("blue")
 
 # start the main loop 
 app.mainloop()
