@@ -12,7 +12,8 @@ customtkinter
 pillow
 psutil
 
-Features/about them
+Features of Monochromia: 
+
 
 Features I would've wanted/will be adding 
 
