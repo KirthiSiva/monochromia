@@ -13,22 +13,23 @@ if __name__ == '__main__':
     multiprocessing.freeze_support()
 
 # All the classes/modules that I am using for my project 
-from clock import DateTimeWidget 
-from to_do import ToDoList
-from tab_set import AutoTabOpen
-from cpu_gpu_perf import PerfGraph
-from quotes import QuoteGen 
-from weather import Weather 
-from pc_display import PCDisplay
-from pomodoro import Timer 
-from fractal_tree import Fractal
+from widgets.clock import DateTimeWidget 
+from widgets.to_do import ToDoList
+from widgets.tab_set import AutoTabOpen
+from widgets.cpu_gpu_perf import PerfGraph
+from widgets.quotes import QuoteGen 
+from widgets.weather import Weather 
+from widgets.pc_display import PCDisplay
+from widgets.pomodoro import Timer 
+from widgets.fractal_tree import Fractal
 
 # import fonts 
 DIR = Path(__file__).resolve().parent
-google_font_dir = DIR / "assets" / "GoogleSansFlex-VariableFont_GRAD,ROND,opsz,slnt,wdth,wght.ttf"
+google_font_dir = DIR / "widgets" / "assets" / "GoogleSansFlex-VariableFont_GRAD,ROND,opsz,slnt,wdth,wght.ttf"
 ctk.FontManager.load_font(str(google_font_dir))
 
 # function to read from the to_do list json
+# this will not check whether it is completed or not, that will be done later
 def save_read_todo(): 
     pass
 
@@ -65,7 +66,8 @@ timer = Timer(master = app)
 # rowspan and columnspan make it able to "leave" its own quadrant! perfect for what I want 
 fractal.grid(row = 0, column = 0, rowspan=3, columnspan=3) # it starts at the center 
 
-clock.grid(row = 1, column = 1, padx = 20, pady = 20)
+clock.grid(row = 1, column = 1, sticky = "new", pady = 30)
+clock.lift() # it is getting cut off right now so make it the top of the screen
 to_do.grid(row = 1, column = 2, sticky = "nsew", padx = 40)
 tab.grid(row = 0, column = 1, sticky = "nwe", pady = 60)
 hardware.grid(row = 0, column = 2, sticky = "ne", padx = 200, pady= 100)

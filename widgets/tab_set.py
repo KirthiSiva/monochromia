@@ -71,7 +71,7 @@ class AutoTabOpen(ctk.CTkFrame):
         #2: open an input dialgue when the button is clicked to add a new link 
         # I am intentially not adding any "checks" or verifying anything because it does not matter for this
         # The user is allowed to do anything they want for this
-        dialog =  ctk.CTkInputDialog(text = "Enter in a new link!", title = "Setting up YOUR links!")
+        dialog =  ctk.CTkInputDialog(text = "Enter in a new link! (e.g. www.youtube.ca)", title = "Setting up YOUR links!")
         
         #3: get the user input, and set that as the new url! 
         # make sure this only happens if they click ok, so void results from clicking cancel or the x. 

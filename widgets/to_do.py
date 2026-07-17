@@ -133,8 +133,8 @@ class ToDoList(ctk.CTkScrollableFrame):
         index_to_add = len(self.checkboxes)
         
         new_item = ctk.CTkCheckBox(self, text = user_input, font = ("Google Sans Flex", 18, "bold"), text_color = "white", command = self.on_completed, checkmark_color="black", fg_color= "white", hover_color="white")
-        new_item.grid(row=index_to_add, column=0, padx=10, pady=(10, 0), sticky="w")
-        self.checkboxes.append(new_item)
+        self.checkboxes.insert(0, new_item) # this is done so that it actually adds to the TOP, not the bottom! 
+        self.on_completed() # call on_completed() so that it refreshes for me!
         
         # add to fractal 
         self.fractal.update_progress(

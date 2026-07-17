@@ -2,10 +2,12 @@ import customtkinter as ctk
 import time
 
 class DateTimeWidget(ctk.CTkFrame):      
-    def __init__(self, master, width = 200, height = 200, corner_radius = 100, border_width = None, bg_color = "transparent", fg_color = "transparent", border_color = None, background_corner_colors = None, overwrite_preferred_drawing_method = None, **kwargs):
+    def __init__(self, master, width = 400, height = 400, corner_radius = 100, border_width = None, bg_color = "transparent", fg_color = "#2B2B2B", border_color = None, background_corner_colors = None, overwrite_preferred_drawing_method = None, **kwargs):
         super().__init__(master, width, height, corner_radius, border_width, bg_color, fg_color, border_color, background_corner_colors, overwrite_preferred_drawing_method, **kwargs)
         
         self.is_24hr = True # gather the state of the clock 
+        
+        self.grid_propagate(False)
         
         # placeholder for the time 
         self.clock_lbl = ctk.CTkLabel(self, text = "00:00:00", font = ("Google Sans Flex", 96, "bold"))
@@ -16,8 +18,10 @@ class DateTimeWidget(ctk.CTkFrame):
         self.date_lbl.pack(pady=(0, 5))
         
         # toggle button for 24 hrs and 12 hr 
-        self.tgl_btn = ctk.CTkButton(self, text = "12 hr", font = ("Google Sans Flex", 14, "bold"), fg_color = "gray", bg_color= "black", hover_color= "black", text_color="white", command=self.toggle_format)
+        self.tgl_btn = ctk.CTkButton(self, text = "12 hr", font = ("Google Sans Flex", 14, "bold"), fg_color = "gray", bg_color= "transparent", hover_color= "black", text_color="white", command=self.toggle_format)
         self.tgl_btn.pack(pady=5)
+        
+        self.configure(corner_radius = 50)
         
         # start the loop of the clock
         self.tick()
