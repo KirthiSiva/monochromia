@@ -21,6 +21,7 @@ from quotes import QuoteGen
 from weather import Weather 
 from pc_display import PCDisplay
 from pomodoro import Timer 
+from fractal_tree import Fractal
 
 # import fonts 
 DIR = Path(__file__).resolve().parent
@@ -50,8 +51,9 @@ app.after(0, lambda: app.state('zoomed'))
 app.minsize(1920, 1050)
 
 # define all the widgets to add to the program
+fractal = Fractal(master = app)
 clock = DateTimeWidget(master = app)
-to_do = ToDoList(master = app, values = [])
+to_do = ToDoList(master = app, values = [], fractal = fractal)
 tab = AutoTabOpen(master = app) 
 hardware = PerfGraph(master = app)
 quotes = QuoteGen(master = app) 
@@ -69,7 +71,8 @@ weather.grid(row = 0, column = 0)
 pc_display.grid(row = 1, column = 0)
 timer.grid(row = 2, column = 0, sticky = "we", padx = (100, 0))
 
-ctk.set_default_color_theme("blue")
+# rowspan and columnspan make it able to "leave" its own quadrant! perfect for what I want 
+fractal.grid(row = 1, column = 1, rowspan=3, columnspan=3, sticky="nsew") # it starts at the center 
 
 # start the main loop 
 app.mainloop()

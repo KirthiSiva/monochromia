@@ -2,8 +2,11 @@ import customtkinter as ctk
 import tkinter.font as tkfont
 
 class ToDoList(ctk.CTkScrollableFrame):
-    def __init__(self, master, values, width = 200, height = 200, corner_radius = 50, border_width = None, bg_color = "transparent", fg_color = None, border_color = None, scrollbar_fg_color = None, scrollbar_button_color = None, scrollbar_button_hover_color = None, label_fg_color = None, label_text_color = None, label_text = "", label_font = None, label_anchor = "center", orientation = "vertical"):
+    def __init__(self, master, values, fractal, width = 200, height = 200, corner_radius = 50, border_width = None, bg_color = "transparent", fg_color = None, border_color = None, scrollbar_fg_color = None, scrollbar_button_color = None, scrollbar_button_hover_color = None, label_fg_color = None, label_text_color = None, label_text = "", label_font = None, label_anchor = "center", orientation = "vertical"):
         super().__init__(master, width, height, corner_radius, border_width, bg_color, fg_color, border_color, scrollbar_fg_color, scrollbar_button_color, scrollbar_button_hover_color, label_fg_color, label_text_color, label_text, label_font, label_anchor, orientation)
+       
+        # add the fractal here 
+        self.fractal = fractal 
        
         # create a grid for the checkboxes 
         self.grid_columnconfigure(0, weight = 1)
@@ -85,11 +88,15 @@ class ToDoList(ctk.CTkScrollableFrame):
                 self.checkboxes.append(i)
                 count += 1
         
-        #2: Get the # of completed items 
-        num_of_completed = self.get()
-        
-        # update tree/give tree update trigger 
-        # FIGURE THIS OUT LATER
+        #update the fractal 
+        self.fractal.update_progress(
+            self.get(),
+            self.return_total()
+        )
+    
+    # function to return the total length of the checkboxes (how many there are total)
+    def return_total(self): 
+        return len(self.checkboxes)
     
     # function for when the "add" button is clicked (open the input)
     def button_pressed(self): 
@@ -128,3 +135,9 @@ class ToDoList(ctk.CTkScrollableFrame):
         new_item = ctk.CTkCheckBox(self, text = user_input, font = ("Google Sans Flex", 18, "bold"), text_color = "white", command = self.on_completed, checkmark_color="black", fg_color= "white", hover_color="white")
         new_item.grid(row=index_to_add, column=0, padx=10, pady=(10, 0), sticky="w")
         self.checkboxes.append(new_item)
+        
+        # add to fractal 
+        self.fractal.update_progress(
+            self.get(),
+            self.return_total()
+        )
