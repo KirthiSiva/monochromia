@@ -4,34 +4,25 @@
 import webbrowser
 import customtkinter as ctk 
 
-"""
-
-How to edit the actual buttons (Force a limit of 5). 
-- When you click on them, it opens the window to be able to CHANGE the links of them! 
-- I can save each button into its own json (well i mean together but ykwim)
-- Wait, instead of this, I can make it so that there is only a single button there to edit each thing, 
-and then there is one button to OPEN the screen to edit them all! If I have time of course to do this. 
-
-
-"""
-
 # this class is for the buttons that will be held here. 
 # These buttons will be used to edit the links of the tab
 # set the urls as a deeper property of it that is not shown (unless using the window)
-class TabButton(ctk.CTkButton): 
-    pass
-    # figure out how to detect button state to launch window and change url 
-
-# have a button in here to actually open all the tabs
 class AutoTabOpen(ctk.CTkFrame):
     def __init__(self, master, width = 200, height = 50, corner_radius = 100, border_width = None, bg_color = "transparent", fg_color = None, border_color = None, background_corner_colors = None, overwrite_preferred_drawing_method = None, **kwargs):
         super().__init__(master, width, height, corner_radius, border_width, bg_color, fg_color, border_color, background_corner_colors, overwrite_preferred_drawing_method, **kwargs)
 
         # add a label 
-        self.lbl = ctk.CTkLabel(master, text = "Quick Start", font = ("Google Sans Flex", 30, "bold"), text_color = "white", fg_color="transparent", bg_color="transparent")
-        self.lbl.grid(row = 0, column = 1, sticky = "nw", padx = 150)
+        self.lbl = ctk.CTkLabel(master, text = "🚀 Quick Start", font = ("Google Sans Flex", 30, "bold"), text_color = "white", fg_color="transparent", bg_color="transparent")
+        self.lbl.grid(row = 0, column = 1, sticky = "nw", padx = 120)
 
-        # add a button 
-     
-       
+        # add a button that will instantly open up all the tabs 
+        self.open_button = ctk.CTkButton(master, text = "Launch!", font = ("Google Sans Flex", 18, "normal"), corner_radius = 100, text_color = "white", fg_color="black", bg_color="transparent", command = self.open_all_pressed)
+        self.open_button.grid(row = 0, column = 1, sticky = "ne", padx = 130, pady = 10)
         
+        # create the grid system for this so that all the buttons look good 
+        # make sure to set propogate grid as False this time 
+        self.grid_columnconfigure((0, 1, 2, 3, 4, 5), weight=1, uniform="hello")
+        self.grid_propagate(False) 
+    
+    def open_all_pressed(self):
+        pass

@@ -13,26 +13,18 @@ from cpu_gpu_perf import PerfGraph
 from goal import Goal 
 from weather import Weather 
 from pc_display import PCDisplay
-from prod_graph import ProdGraph
 
 # import fonts 
 DIR = Path(__file__).resolve().parent
 google_font_dir = DIR / "assets" / "GoogleSansFlex-VariableFont_GRAD,ROND,opsz,slnt,wdth,wght.ttf"
 ctk.FontManager.load_font(str(google_font_dir))
 
-# create a ton of csv files for each thing (reading)
-#speudocode for the csv
-"""
-
-    3 paramatars, name, completion status, and if it is the current thing 
-    - if you complete a thing then close the app, when you open the app, it will be removed
-    - when i do the productivity graph, it will add itself there
-    
-
-"""
-
 # set a value for "values" for the to-do list checklists
 to_do_values = ["hello"]
+
+# function to read from the to_do list json
+def save_read_todo(): 
+    pass
 
 ctk.set_default_color_theme("blue")
 # start the dashboard 

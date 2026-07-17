@@ -7,9 +7,7 @@ import psutil
 class PerfGraph(ctk.CTkFrame): 
     def __init__(self, master, width = 300, height = 150, corner_radius = 50, border_width = None, bg_color = "transparent", fg_color = "#2B2B2B", border_color = None, background_corner_colors = None, overwrite_preferred_drawing_method = None, **kwargs):
         super().__init__(master, width, height, corner_radius, border_width, bg_color, fg_color, border_color, background_corner_colors, overwrite_preferred_drawing_method, **kwargs)
-        
-        # create an instance of the class so that it can do
-        
+                
         # add a label 
         self.lbl = ctk.CTkLabel(master, text = "⏱️ RAM/CPU", font = ("Google Sans Flex", 30, "bold"), text_color = "white", fg_color="transparent", bg_color="transparent")
         self.lbl.grid(row = 0, column = 2, sticky = "n", pady = 50)
