@@ -65,22 +65,24 @@ class Weather(ctk.CTkFrame):
                 
                 # Now, using the weathercode, I will be able to diffrienciate what the weather actually is!
                 code = current["weathercode"]
-                condition = "Clear" # placeholder 
                 if code in [1, 2, 3]: 
                     condition = "Cloudy"
-                    self.update_icon("☁️")
+                    emoji_icon = "☁️"
                 elif code in [45, 48]: 
                     condition = "Foggy"
-                    self.update_icon("🌫️")
+                    emoji_icon = "🌫️"
                 elif code in [51, 53, 55, 61, 63, 65]: 
                     condition = "Rain"
-                    self.update_icon("🌧️")
+                    emoji_icon = "🌧️"
                 elif code in [71, 73, 75]: 
                     condition = "Snow"
-                    self.update_icon("❄️")
+                    emoji_icon = "❄️"
                 elif code in [95, 96, 99]: 
                     condition = "Storm"
-                    self.update_icon("⛈️")
+                    emoji_icon = "⛈️"
+                else: 
+                    condition = "Clear"
+                    emoji_icon = "☀️"
             
             # create a weather var which formats everything correctly 
             weather = f"{temp_c}°C | {condition}"
@@ -88,16 +90,13 @@ class Weather(ctk.CTkFrame):
             # the reason why I cannot simply use "configure" is because thsi is running on a seperate thread
             # if I did that, it would go back to the main threading, crashign everything.
             # evne though its "after", it only updates ONCE so it does not slow any performance. 
-            self.after(0, self.update_ui, city_add, weather)
+            self.after(0, self.update_ui, city_add, weather, emoji_icon)
         
         except Exception: 
             pass # No need to add anything because I already took care of it via the placeholders
       
     # this function is used as a setter method to change the location/weather 
-    def update_ui(self, city, weather): 
+    def update_ui(self, city, weather, emoji): 
         self.lbl_location.configure(text = city)  
         self.lbl_weather.configure(text = weather)
-        
-    # thsi function is specifically for the emoji 
-    def update_icon(self, emoji): 
         self.img.configure(text = emoji)

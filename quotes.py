@@ -22,8 +22,8 @@ class QuoteGen(ctk.CTkFrame):
         # create a label placeholder for the quotes 
         # I also want the quote to "wrap around", so I will be using a property of CTkLabels called "wraplength"
         # "justify = left" basically just forces all the text to "spawn" from the left
-        self.quote_msg = ctk.CTkLabel(self, text = "Loading Quote...", font = ("Google Sans Flex", 60, "normal"), text_color = "white", fg_color="transparent", bg_color="transparent", wraplength = 250, justify = "left")
-        self.quote_msg.grid(row = 0, column = 0)
+        self.quote_msg = ctk.CTkLabel(self, text = "Loading Quote...", font = ("Google Sans Flex", 25, "italic"), text_color = "white", fg_color="transparent", bg_color="transparent", wraplength = 500, justify = "left")
+        self.quote_msg.grid(row = 0, column = 0, sticky = "n", pady = 25)
         
         # create the thread again 
         threading.Thread(target=self.fetch_quotes, daemon=True).start()
@@ -31,8 +31,26 @@ class QuoteGen(ctk.CTkFrame):
     # function that will actually get teh quotes using an API 
     # The api that I will be using is zenquotes, a keyless API that is free and public 
     def fetch_quotes(self): 
-        pass
-    
+        try: 
+            url = "https://zenquotes.io/api/random"
+            quote_req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+
+            # now just read through the data the same way as the weather! 
+            with urllib.request.urlopen(quote_req) as response: 
+                data = json.loads(response.read().decode())
+                
+                # get the quote data 
+                quote_data = data[0]
+                quote = quote_data["q"]
+                author = quote_data["a"]
+            
+            # format then send to setter method 
+            full_quote = f'"{quote}"\n- {author}'
+            self.set_quote(full_quote)
+            
+        except Exception: 
+            pass
+
     # setter method to set the quote text! 
     def set_quote(self, quote): 
-        pass
+        self.quote_msg.configure(text = quote)
