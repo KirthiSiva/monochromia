@@ -1,6 +1,4 @@
 # All the libraries that I will be using for the dashboard
-import json 
-import csv 
 import customtkinter as ctk
 import getpass 
 from pathlib import Path
@@ -33,7 +31,6 @@ ctk.FontManager.load_font(str(google_font_dir))
 def save_read_todo(): 
     pass
 
-ctk.set_default_color_theme("blue")
 # start the dashboard 
 app = ctk.CTk() 
 
