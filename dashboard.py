@@ -10,7 +10,7 @@ from clock import DateTimeWidget
 from to_do import ToDoList
 from tab_set import AutoTabOpen
 from cpu_gpu_perf import PerfGraph
-from goal import Goal 
+from quotes import QuoteGen 
 from weather import Weather 
 from pc_display import PCDisplay
 from pomodoro import Timer 
@@ -47,7 +47,7 @@ clock = DateTimeWidget(master = app)
 to_do = ToDoList(master = app, values = [])
 tab = AutoTabOpen(master = app) 
 hardware = PerfGraph(master = app)
-goal = Goal(master = app) 
+quotes = QuoteGen(master = app) 
 weather = Weather(master = app)
 pc_display = PCDisplay(master = app)
 timer = Timer(master = app)
@@ -57,7 +57,7 @@ clock.grid(row = 1, column = 1, padx = 20, pady = 20)
 to_do.grid(row = 1, column = 2, sticky = "nsew", padx = 40)
 tab.grid(row = 0, column = 1, sticky = "nwe", pady = 60)
 hardware.grid(row = 0, column = 2, sticky = "ne", padx = 200, pady= 100)
-goal.grid(row = 2, column = 2, sticky = "we", padx = (70))
+quotes.grid(row = 2, column = 2, sticky = "we", padx = (70))
 weather.grid(row = 0, column = 0)
 pc_display.grid(row = 1, column = 0)
 timer.grid(row = 2, column = 0, sticky = "we", padx = (100, 0))
