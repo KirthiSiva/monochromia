@@ -91,9 +91,14 @@ class AutoTabOpen(ctk.CTkFrame):
     # this function is used to actually open everything in your browser. 
     # extremely simple, just open them all using the "webbrowser" library
     def open_all_pressed(self):
-        webbrowser.open(f"{self.btn_1.url}") 
-        webbrowser.open(f"{self.btn_2.url}") 
-        webbrowser.open(f"{self.btn_3.url}") 
-        webbrowser.open(f"{self.btn_4.url}") 
-        webbrowser.open(f"{self.btn_5.url}") 
-        webbrowser.open(f"{self.btn_6.url}") 
+        
+        # create a warning in case the user has not added any links 
+        if self.btn_1.cget("text") == "Empty" and self.btn_2.cget("text") == "Empty" and self.btn_3.cget("text") == "Empty" and self.btn_4.cget("text") == "Empty" and self.btn_5.cget("text") == "Empty" and self.btn_6.cget("text") == "Empty":
+            dialog = ctk.CTkInputDialog(text = "You haven't set up any links yet! \nClick one of the 'empty' buttons to fix this!", title = "No Links Found")
+        else: # open all 
+            webbrowser.open(f"{self.btn_1.url}") 
+            webbrowser.open(f"{self.btn_2.url}") 
+            webbrowser.open(f"{self.btn_3.url}") 
+            webbrowser.open(f"{self.btn_4.url}") 
+            webbrowser.open(f"{self.btn_5.url}") 
+            webbrowser.open(f"{self.btn_6.url}") 
