@@ -5,6 +5,13 @@ import customtkinter as ctk
 import getpass 
 from pathlib import Path
 
+# this library is important to stop any crashing from the threading
+# I have in the APIs 
+import multiprocessing 
+
+if __name__ == '__main__':
+    multiprocessing.freeze_support()
+
 # All the classes/modules that I am using for my project 
 from clock import DateTimeWidget 
 from to_do import ToDoList

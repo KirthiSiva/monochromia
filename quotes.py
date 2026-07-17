@@ -22,7 +22,7 @@ class QuoteGen(ctk.CTkFrame):
         # create a label placeholder for the quotes 
         # I also want the quote to "wrap around", so I will be using a property of CTkLabels called "wraplength"
         # "justify = left" basically just forces all the text to "spawn" from the left
-        self.quote_msg = ctk.CTkLabel(self, text = "Loading Quote...", font = ("Google Sans Flex", 25, "italic"), text_color = "white", fg_color="transparent", bg_color="transparent", wraplength = 500, justify = "left")
+        self.quote_msg = ctk.CTkLabel(self, text = "Loading Quote...", font = ("Google Sans Flex", 25, "italic"), text_color = "white", fg_color="transparent", bg_color="transparent", wraplength = 450, justify = "left")
         self.quote_msg.grid(row = 0, column = 0, sticky = "n", pady = 25)
         
         # create the thread again 
