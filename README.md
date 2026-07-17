@@ -24,34 +24,46 @@ Required libraries:
 pip install customtkinter pillow psutil
 ``` 
 
+--- 
+
 ## Features of Monochromia: 
 Monochromia is filled with many widgets to make sure that it stays functional and relevant. 
 
 ### To-do List
-- 
+- Allows you to add, and complete tasks! 
+- Upon completing tasks, they will be sent to the bottom of the list, and be striken through! 
 
 ### "Quick Start" Tab Hub 
-
+- Allows you to add up to 6 URLs that can instantly open at the click of a button! 
+- Links fully customizable by clicking the buttons at the top! 
 
 ### Local Storage System using JSONs 
-
+- Any changes made to the To Do List or Quick launch are instantly autosaved if any changes occur, leading to no progress lost when the app closes! 
+- When opening the program, the states of the items within the To Do List, and all the links will restore on the UI 
 
 ### Fractal Tree Visualizer 
-
+- Fractal tree visualizer to showcase % of tasks complete on the To Do List! 
+- When you complete tasks, it expands, and when you add more, it retracts! 
+- Dynamically updates live to showcase progress! 
 
 ### Quote Generator
-
+- Utilizes Zenquotes keyless free public API to constantly bring new quotes to the dashboard! 
 
 ### Automatic Weather API 
-
+- Utilizes GeoJS and Open Meteo free keyless public APIs to instantly detect location via IP Address, and display current weather of your location! 
 
 ### Live Date and Clock
-
+- Utilizes Python's `time` library to display the live time, and date!
+- Time can swap between 24 hour format, and 12 hour format! 
 
 ### PC Info
-
+- On Desktop, shows the PC Name, and OS version! 
+- On Laptop, shows those, as well as battery information! 
 
 ### Pomodoro Timer
-
+- Creates a loop to simulate the Pomodoro Timer! 
+- Starts with a 25 minute timer, then a 5 minute timer for break, and repeats! 
+- Includes a "Start" and "Stop" button! 
 
 ### RAM/CPU Performance Checker
+- Utilizes the `psutil` library to showcase realtime CPU and RAM usage percentages!
