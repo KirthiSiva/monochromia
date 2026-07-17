@@ -4,18 +4,52 @@ DISCLAIMER: This app requires at least a 1920x1080 screen, and it is only tested
 
 --- 
 
-# About: 
-Monochromia is a smart dashboard which is designed to stay on your desktop! It utilizes a monochrome theme to stay cool and sleek. The dashboard is highly conveient, working easily out of the box, only requiring you to download some python libraries! 
+## About: 
+Monochromia is a smart dashboard which is designed to stay on your desktop! It utilizes a monochrome theme utilizing CustomTkinter to stay clean and sleek. The dashboard is highly conveient, working easily out of the box, only requiring you to download some python libraries! 
 
-# How to run: 
+## How to run: 
+To run the application, download the .zip file, unzip, then launch main.py using Python! 
+
+Required libraries: 
 - Many libraries are required for this application because of all the widgets that are being used
 - List of all the libraries that do NOT come preinstalled into python:
     - customtkinter 
     - pillow
     - psutil
 
-# To run the application, download the .zip file, unzip, then launch main.py! 
+### How to install: 
+```
+pip install customtkinter pillow psutil
+``` 
 
---- 
+## Features of Monochromia: 
+Monochromia is filled with many widgets to make sure that it stays functional and relevant. 
 
-# Features of Monochromia: 
+### To-do List
+- 
+
+### "Quick Start" Tab Hub 
+
+
+### Local Storage System using JSONs 
+
+
+### Fractal Tree Visualizer 
+
+
+### Quote Generator
+
+
+### Automatic Weather API 
+
+
+### Live Date and Clock
+
+
+### PC Info
+
+
+## Pomodoro Timer
+
+
+## RAM/CPU Performance Checker
