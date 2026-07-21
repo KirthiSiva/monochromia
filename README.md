@@ -46,6 +46,8 @@ Monochromia is filled with many widgets to make sure that it stays functional an
 - When you complete tasks, it expands, and when you add more, it retracts! 
 - Dynamically updates live to showcase progress! 
 
+<img width="404" height="228" alt="fractal_demo" src="https://github.com/user-attachments/assets/e683bef0-a28a-48c9-ba01-2782b30065e4" />
+
 ### Quote Generator
 - Utilizes Zenquotes keyless free public API to constantly bring new quotes to the dashboard! 
 
